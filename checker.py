@@ -10,7 +10,7 @@ import pandas as pd
 
 to_remove = {'Service', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', "random", "string", "randint"}
 
-subprocess.run(["/bin/bash", "-c", "$VIRTUAL_ENV/bin/pip install -r b0mb3r/requirements.txt"], env=os.environ)
+subprocess.run(["pip", "install", "-r", "b0mb3r/requirements.txt"], env=os.environ)
 
 sys.path.extend([str(Path.cwd()), str(Path.cwd().joinpath("b0mb3r"))])
 
