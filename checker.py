@@ -46,8 +46,8 @@ async def run():
             print(service, "crashed")
             df = df.append({"name": service, "recived": -1, "time_passed": t1 - time.time()}, ignore_index=True)
             continue
-        recived = input("Did you get the message?> ").strip() == "y"
-        df = df.append({"name": service, "recived": int(recived)}, ignore_index=True)
+        recived = input("Вы получили сообщение? (напишите y на англ если пришло, иначе оставьте пустым)> ").strip() == "y"
+        df = df.append({"name": service, "recived": int(recived), "time_passed": t1 - time.time()}, ignore_index=True)
 
     df.to_csv(f"out_{country_code}.csv")
 
