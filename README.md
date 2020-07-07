@@ -1,3 +1,7 @@
 # чекер для бомбера
 
-в начале напишите `git submodule update --init`
+```
+git submodule update --init
+python checker.py
+# потом скиньте файл out_*.csv
+```
