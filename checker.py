@@ -33,21 +33,21 @@ async def run():
             cls = set(dir(module)).difference(to_remove).pop()
             cls = getattr(module, cls)
             serv = cls(phone, country_code)
-        except:
+        except Exception as err:
             print(service, "crashed")
-            df = df.append({"name": service, "recived": -1, "time_passed": t1 - time.time()}, ignore_index=True)
+            df = df.append({"name": service, "recived": -1, "time_passed": t1 - time.time(), "error": str(err)}, ignore_index=True)
             continue
         if country_code not in cls.phone_codes:
             print("skipping service", service)
             continue
         try:
             await serv.run()
-        except:
+        except Exception as err:
             print(service, "crashed")
-            df = df.append({"name": service, "recived": -1, "time_passed": t1 - time.time()}, ignore_index=True)
+            df = df.append({"name": service, "recived": -1, "time_passed": t1 - time.time(), "error": str(err)}, ignore_index=True)
             continue
         recived = input("Вы получили сообщение? (напишите y на англ если пришло, иначе оставьте пустым)> ").strip() == "y"
-        df = df.append({"name": service, "recived": int(recived), "time_passed": t1 - time.time()}, ignore_index=True)
+        df = df.append({"name": service, "recived": int(recived), "time_passed": t1 - time.time(), "error": ""}, ignore_index=True)
 
     df.to_csv(f"out_{country_code}.csv")
 
