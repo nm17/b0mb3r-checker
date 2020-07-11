@@ -18,7 +18,7 @@ services_name = map(lambda a: Path(a).name.replace(".py", ""), glob("b0mb3r/b0mb
 
 print("При тесте будут всплывать ошибки, игнорьте их.")
 
-phone = input("Ноиер телефона без кода страны и плюсов> ")
+phone = input("Номер телефона без кода страны и плюсов> ")
 country_code = int(input("Код страны (Например 375, без плюсов)> "))
 
 df = pd.DataFrame()
